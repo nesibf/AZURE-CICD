@@ -24,3 +24,15 @@ jobs:
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "." # Built app content directory - optional
+
+          # Merge da branch dev na qa
+      - name: Merge dev into qa
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git checkout qa
+          git merge dev
+          git push origin qa
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
