@@ -6,12 +6,17 @@ Este repositório contém a configuração de pipelines CI/CD para gerenciar os 
 ### Dev
 O pipeline de Dev é acionado sempre que há um push para a branch `dev`. Ele faz o build e deploy da aplicação para o ambiente de Desenvolvimento e cria um Pull Request (PR) para a branch `qa` para revisão e testes adicionais.
 
+> Link do site em Dev: https://yellow-stone-0f93d7c0f.5.azurestaticapps.net
+
 ### QA
 O pipeline de QA é acionado quando um Pull Request para a branch `qa` é fechado. Este pipeline realiza o build e deploy da aplicação para o ambiente de Qualidade.
+
+> Link do site em QA: https://witty-glacier-09a3fa10f.5.azurestaticapps.net
 
 ### Prod
 O pipeline de Prod é acionado quando um Pull Request para a branch `main` é fechado. Este pipeline faz o build e deploy da aplicação para o ambiente de Produção e também fecha o Pull Request se for apropriado.
 
+> Link do site em Prod: https://lively-grass-003c4aa0f.5.azurestaticapps.net
 
 ## Passos para Configuração
 **Crie Repositórios e Branches:** Garanta que você tenha os repositórios e branches (`dev`, `qa`, `main`) configurados no GitHub.
