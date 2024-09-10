@@ -1,0 +1,38 @@
+name: Dev Environment Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build_and_deploy_job:
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          lfs: false
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_STONE_0F93D7C0F }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          app_location: "/" # App source code path
+          api_location: "" # Api source code path - optional
+          output_location: "." # Built app content directory - optional
+
+      # Criar Pull Request da branch 'dev' para 'qa'
+      - name: Create Pull Request to qa
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Merge dev into qa"
+          title: "Pull Request: Merge dev into qa"
+          body: "This PR merges the changes from dev into qa."
+          base: qa
+          head: dev
+          branch: dev-to-qa-automated-pr # Nome da branch do PR
