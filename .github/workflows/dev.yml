@@ -25,14 +25,14 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "." # Built app content directory - optional
 
-          # Merge da branch dev na qa
-      - name: Merge dev into qa
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git checkout qa
-          git merge dev
-          git push origin qa
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
+      # Criar Pull Request da branch 'dev' para 'qa'
+      - name: Create Pull Request to qa
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Merge dev into qa"
+          title: "Pull Request: Merge dev into qa"
+          body: "This PR merges the changes from dev into qa."
+          base: qa
+          head: dev
+          branch: dev-to-qa-automated-pr # Nome da branch do PR
