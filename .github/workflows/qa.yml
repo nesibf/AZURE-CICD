@@ -1,9 +1,11 @@
 name: QA Environment Azure Static Web Apps CI/CD
 
 on:
-  push:
+  pull_request:
     branches:
       - qa
+    types:
+      - closed # Executa apenas quando o PR é fechado
 
 jobs:
   build_and_deploy_job:
