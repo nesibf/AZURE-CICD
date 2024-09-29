@@ -1,5 +1,5 @@
-## Taken from:
-## https://medium.com/@lorenzouriel/ci-cd-with-github-actions-on-azure-web-app-dev-qa-and-prod-241c1cadd9b6
+### Taken from:
+### https://medium.com/@lorenzouriel/ci-cd-with-github-actions-on-azure-web-app-dev-qa-and-prod-241c1cadd9b6
 
 # CI/CD com GitHub Actions no Azure Web App (Dev, QA e Prod)
 
